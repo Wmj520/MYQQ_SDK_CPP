@@ -19,10 +19,7 @@
 #include <ctime>
 #include <sstream>
 
-
-
 #define ThreadPoolSize 2
-
 #ifndef CallingConvention
 #define CallingConvention __stdcall
 #endif // !CallingConvention
