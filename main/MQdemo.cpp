@@ -1,4 +1,4 @@
-﻿#include <MQconfig.h>
+#include <MQconfig.h>
 #include <MQCore/MQHeader.h>
 #include <GlobalVar.h>
 using namespace MQ;
