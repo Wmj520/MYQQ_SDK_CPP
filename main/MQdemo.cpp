@@ -1,4 +1,4 @@
-﻿#include <MQconfig.h>
+#include <MQconfig.h>
 #include <MQCore/MQHeader.h>
 #include <GlobalVar.h>
 using namespace MQ;
@@ -15,7 +15,7 @@ void processEvent(const Event::NormalEvent& e)
 		if (e.botQQ == e.activeQQ)return;
 		//日志输出 fun
 		MQ::Api::FrameAPI::OutPut("fun");
-		//日志输出[info]fun
+		//日志输出 [info]fun
 		logging::info("fun");
 		//复读
 		MQ::Api::MessageAPI::SendMsg(e.botQQ, Enum::msgType::好友, "", e.activeQQ, e.msg);
@@ -37,7 +37,9 @@ MQ_REGISTER_EVENT
 		MQEventCheck(e.eventType, Enum::MQEventEnum::消息类型_好友)
 		{
 			if (e.botQQ == e.activeQQ)return;
+			//日志输出 lambda
 			Api::FrameAPI::OutPut("lambda");
+			//复读QQ
 			Api::MessageAPI::SendMsg(e.botQQ, Enum::msgType::好友, "", e.activeQQ, MQ::文本代码::对象QQ() + ":" + e.msg);
 			//阻止后续该事件回调函数执行,低优先级回调函数无权拒绝
 			e.eventBlock();
