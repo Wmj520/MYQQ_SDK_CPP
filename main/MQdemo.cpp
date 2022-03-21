@@ -39,7 +39,7 @@ MQ_REGISTER_EVENT
 			e.eventBlock();
 		}
 	}, 10000);
-	//注册事件回调函数3,优先级1
+	//注册事件回调函数3,优先级10000
 	Event::reg_Event([](const Event::NormalEvent& e) {
 		MQEventCheck(e.eventType, Enum::MQEventEnum::消息类型_本插件载入)
 		{
