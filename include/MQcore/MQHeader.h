@@ -2,7 +2,11 @@
 #ifndef __MQ_HEADER__
 #define __MQ_HEADER__
 #include <MQconfig.h>
+#if !defined MYQQ
 #define MYQQ
+#define MYQQVER	"1.9.2"
+#define CheckMQVersion(Ver) (strcmp((Ver), MYQQVER) == 0)
+#endif
 #if (!defined (MYQQ)) && (!defined MYQQA)
 #error 请在"MQconfig.H"确定你使用的MYQQ版本！
 #elif (defined MYQQ) && (defined MYQQA)

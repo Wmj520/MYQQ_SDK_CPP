@@ -77,6 +77,12 @@
     <ClInclude Include="include\json\json-forwards.h">
       <Filter>头文件\json</Filter>
     </ClInclude>
+    <ClInclude Include="include\GlobalVar.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MQconfig.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="include\MQcore\MyQQAPI.inc">

@@ -19,8 +19,15 @@
 #include <ctime>
 #include <sstream>
 
-#define CallingConvention __stdcall
+
+
 #define ThreadPoolSize 2
+
+#ifndef CallingConvention
+#define CallingConvention __stdcall
+#endif // !CallingConvention
+#ifndef _DELETE
 #define _DELETE(__Ptr) {if(__Ptr != nullptr){delete (__Ptr); (__Ptr) = nullptr;}}
 #define _DELETE_Arr(__Ptr) {if(__Ptr != nullptr){delete[] (__Ptr); (__Ptr) = nullptr;}}
+#endif // !_DELETE
 #endif //!__MQCONFIG_H__

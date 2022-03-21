@@ -18,9 +18,11 @@
     <ClCompile Include="src\MQcore\MQEvent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\GlobalVar.h" />
     <ClInclude Include="include\json\json-forwards.h" />
     <ClInclude Include="include\json\json.h" />
     <ClInclude Include="include\json\myJson.hpp" />
+    <ClInclude Include="include\MQconfig.h" />
     <ClInclude Include="include\MQcore\MQAPI.h" />
     <ClInclude Include="include\MQcore\MQEvent.h" />
     <ClInclude Include="include\MQcore\MQException.h" />

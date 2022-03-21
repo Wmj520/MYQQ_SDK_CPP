@@ -132,14 +132,6 @@ EVENT(Enum::EventRet, MQ_Event, 44)(Text 框架QQ, Integer 消息类型, Integer
     {
         p.push([](int) {MQExceptionWrapper(__Init)(); });
     }
-    MQEventCheck(消息类型, Enum::MQEventEnum::消息类型_插件被启用)
-    {
-        MQExceptionCode(exception::MQException::MQExceptionEnum::MQOK, "插件启用成功！");
-    }
-    MQEventCheck(消息类型, Enum::MQEventEnum::消息类型_插件被禁用)
-    {
-        MQExceptionCode(exception::MQException::MQExceptionEnum::MQOK, "插件正在禁用！");
-    }
     auto InitTime = clock();
     while (!APIInitSuccess)
     {
@@ -149,6 +141,14 @@ EVENT(Enum::EventRet, MQ_Event, 44)(Text 框架QQ, Integer 消息类型, Integer
             return Enum::EventRet::事件处理_拒绝;
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+    MQEventCheck(消息类型, Enum::MQEventEnum::消息类型_插件被启用)
+    {
+        MQExceptionCode(exception::MQException::MQExceptionEnum::MQOK, "插件启用成功！");
+    }
+    MQEventCheck(消息类型, Enum::MQEventEnum::消息类型_插件被禁用)
+    {
+        MQExceptionCode(exception::MQException::MQExceptionEnum::MQOK, "插件正在禁用！");
     }
     MQEventCheck(消息类型, Enum::MQEventEnum::消息类型_本插件载入)
     {
