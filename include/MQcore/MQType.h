@@ -13,7 +13,7 @@ typedef int64_t LLInteger;
 typedef uint64_t ULLInteger;
 typedef int8_t SInteger;
 typedef uint8_t SUInteger;
-namespace MQ::type
+namespace MQ::Type
 {
 	typedef struct
 	{

@@ -17,7 +17,7 @@ namespace MQ
 			}
 		};
 	}
-	namespace logging
+	namespace Logging
 	{
 #define Logger(__Level) static inline void __Level(Text _msg)\
 		{\

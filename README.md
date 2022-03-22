@@ -18,8 +18,8 @@ using namespace MQ;
 //MQ::Api		MQ 提供的api函数接口
 //MQ::Enum		MQ 事件常量
 //MQ::Event		MQ 注册事件回调函数
-//MQ::logging	MQ 日志
-//MQ::type		MQ 相关数据封装
+//MQ::Logging	MQ 日志
+//MQ::Type		MQ 相关数据封装
 //MQ::文本代码	MQ 文本代码
 void processEvent(const Event::NormalEvent& e)
 {
@@ -27,11 +27,11 @@ void processEvent(const Event::NormalEvent& e)
 	{
 		if (e.botQQ == e.activeQQ)return;
 		//日志输出 fun
-		MQ::Api::FrameAPI::OutPut("fun");
+		Api::FrameAPI::OutPut("fun");
 		//日志输出[info]fun
-		logging::info("fun");
+		Logging::info("fun");
 		//复读
-		MQ::Api::MessageAPI::SendMsg(e.botQQ, Enum::msgType::好友, "", e.activeQQ, e.msg);
+		Api::MessageAPI::SendMsg(e.botQQ, Enum::msgType::好友, "", e.activeQQ, e.msg);
 		//MQ::MessageAPI::SendMsg(e.botQQ, msgType::群, e.sourceId, "", e.msg);
 	}
 }
@@ -44,9 +44,9 @@ MQ_REGISTER_EVENT
 {
 	if (EventContInit)return;
 	//注册事件回调函数1,优先级20000
-	MQ::Event::reg_Event(processEvent, 20000);
+	Event::reg_Event(processEvent, 20000);
 	//注册事件回调函数2,优先级10000
-	MQ::Event::reg_Event([](const Event::NormalEvent& e) {
+	Event::reg_Event([](const Event::NormalEvent& e) {
 		MQEventCheck(e.eventType, Enum::MQEventEnum::消息类型_好友)
 		{
 			if (e.botQQ == e.activeQQ)return;
@@ -74,4 +74,15 @@ MQ_REGISTER_EVENT
 
 ### 简介
 
-系统载入函数-用户载入函数-用户事件处理函数
+- `MQ::Api` 命名空间封装了MQ提供的大部分api接口，现更新到MyQQ `1.9.2` 版本
+- `MQ::文本代码` 命名空间提供了快速构造MQ文本代码的接口
+- `MQ::Enum`命名空间封装了MQ相关常量 `MQEventEnum` 、事件返回值 `EventRet`、消息来源类型 `msgType`
+- `MQ::Event` 命名空间提供了注册MQ各事件回调函数接口，如` reg_Event`，并且封装了MQ各事件的数据类，如 `NomarlEvent` 等，将在事件回调函数中传入
+- `MQ::Type` 命名空间提供了相关数据类，如 `GroupInfo`、`GroupNotice`、`GroupMember` 等
+- ......
+
+### 使用方式
+
+本项目使用 [Visual Studio](https://visualstudio.microsoft.com/zh-hans/) 构建，请确保安装了 **Visual Studio 2019** ，并勾选「使用 C++ 的桌面开发」，安装了 **MSVC v142**、**Windows 10 SDK** 组件。
+
+### 修改PluginId和其他信息

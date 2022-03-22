@@ -6,6 +6,7 @@
 
 #define EVENT(ReturnType, Name, Size) __pragma(comment(linker, "/EXPORT:" #Name "=_" #Name "@" #Size))\
  extern "C" ReturnType __stdcall Name
+
 #define __MQEVENT(__Event, __EventData)\
 		void reg_##__Event(const std::function<void(__EventData)>& _Callback, const uint16_t& priority = 30000);\
 		void clr_##__Event(void);
@@ -99,7 +100,6 @@ namespace MQ
 			群临时会话 = 4, 讨论组临时会话 = 5, 在线临时会话 = 6
 		};
 	}
-	
 
 	namespace Event
 	{

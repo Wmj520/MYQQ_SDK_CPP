@@ -31,8 +31,7 @@ class functionCont : public Priority
 public:
     std::function<void(_FunTy)> _Fun;
     functionCont(const std::function<void(_FunTy)>& _fun, const uint16_t& priortiy = 30000) : _Fun(_fun), Priority(priortiy)
-    {
-    }
+    {}
 };
 bool operator<(const Priority& a, const Priority& b)
 {

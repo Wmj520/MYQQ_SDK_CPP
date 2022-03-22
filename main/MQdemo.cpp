@@ -5,8 +5,8 @@ using namespace MQ;
 //MQ::Api		MQ 提供的api函数接口
 //MQ::Enum		MQ 事件常量
 //MQ::Event		MQ 注册事件回调函数
-//MQ::logging	MQ 日志
-//MQ::type		MQ 相关数据封装
+//MQ::Logging	MQ 日志
+//MQ::Type		MQ 相关数据封装
 //MQ::文本代码	MQ 文本代码
 void processEvent(const Event::NormalEvent& e)
 {
@@ -16,7 +16,7 @@ void processEvent(const Event::NormalEvent& e)
 		//日志输出 fun
 		MQ::Api::FrameAPI::OutPut("fun");
 		//日志输出 [info]fun
-		logging::info("fun");
+		Logging::info("fun");
 		//复读
 		MQ::Api::MessageAPI::SendMsg(e.botQQ, Enum::msgType::好友, "", e.activeQQ, e.msg);
 		//MQ::MessageAPI::SendMsg(e.botQQ, msgType::群, e.sourceId, "", e.msg);
