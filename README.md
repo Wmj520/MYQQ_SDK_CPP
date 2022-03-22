@@ -85,4 +85,6 @@ MQ_REGISTER_EVENT
 
 本项目使用 [Visual Studio](https://visualstudio.microsoft.com/zh-hans/) 构建，请确保安装了 **Visual Studio 2019** ，并勾选「使用 C++ 的桌面开发」，安装了 **MSVC v142**、**Windows 10 SDK** 组件。
 
-### 修改PluginId和其他信息
+### 修改插件信息
+
+请在 `MQHeader.h` 文件修改插件相关的 `ID` 、`Author`
