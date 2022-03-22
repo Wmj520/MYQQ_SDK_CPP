@@ -132,7 +132,7 @@ EVENT(Enum::EventRet, MQ_Event, 44)(Text 框架QQ, Integer 消息类型, Integer
         p.push([](int) {MQExceptionWrapper(__Init)(); });
     }
     auto InitTime = clock();
-    while (!APIInitSuccess)
+    while (!PluginLoad)
     {
         OutTime(3)
         {
@@ -169,17 +169,16 @@ EVENT(Enum::EventRet, MQ_Event, 44)(Text 框架QQ, Integer 消息类型, Integer
 */
 void CallingConvention __Init()
 {
-    if (!PluginEnable)
+    if (!PluginLoad)
     {
         MQHModule = LoadLibraryA(APIDLLNAME);
         if (MQHModule)
         {
             initFuncs(MQHModule);
-            APIInitSuccess = true;
             MQExceptionCode(exception::MQException::MQExceptionEnum::MQOK, "插件载入成功！");
             Api::FrameAPI::OutPut("插件Api初始化完毕...");
             init();
-            PluginEnable = true;
+            PluginLoad = true;
         }
         else
         {
@@ -192,7 +191,7 @@ void CallingConvention __Init()
 */
 void CallingConvention __UnInit()
 {
-    if (PluginEnable)
+    if (PluginLoad)
     {
         Api::FrameAPI::OutPut("即将卸载插件...");
         if (MQHModule != nullptr)
@@ -202,7 +201,7 @@ void CallingConvention __UnInit()
         }
         p.stop();
         MQExceptionCode(exception::MQException::MQExceptionEnum::MQOK, "插件正在卸载！");
-        PluginEnable = false;
+        PluginLoad = false;
     }
 }
 

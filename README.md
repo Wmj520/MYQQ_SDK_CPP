@@ -81,10 +81,26 @@ MQ_REGISTER_EVENT
 - `MQ::Type` 命名空间提供了相关数据类，如 `GroupInfo`、`GroupNotice`、`GroupMember` 等
 - ......
 
-### 使用方式
+### 预备
 
 本项目使用 [Visual Studio](https://visualstudio.microsoft.com/zh-hans/) 构建，请确保安装了 **Visual Studio 2019** ，并勾选「使用 C++ 的桌面开发」，安装了 **MSVC v142**、**Windows 10 SDK** 组件。
 
+若已安装 **Visual Studio 2019**，请直接打开目录下的 **[MYQQ_SDK_CPP.sln](MYQQ_SDK_CPP.sln)** 文件。
+
 ### 修改插件信息
 
-请在 `MQHeader.h` 文件修改插件相关的 `ID` 、`Author`
+请在 `MQHeader.h` 文件修改插件相关的 `Id` 、`Author`、`Desc` 、`Version` 信息，并将项目重命名为你的插件名(即你想要命名的dll前缀)，并且该项需要与 `PluginId` 宏一致，否则插件将会载入失败。
+
+### 编写插件
+
+移除 [`main/MQdemo.cpp`](main/MQdemo.cpp) 或在其基础上修改，实现自己的功能。
+
+具体API函数和事件函数请在命名空间 `MQ` 内查找。
+
+若有未添加的MQ api函数请自行添加，`MyQQApi.dll` 载入句柄为`MQHModule` 。
+
+### 生成项目
+
+在 **Visual Studio** 使用快捷键 **Ctrl + Alt + F7** 生成项目，生成的 **dll文件** 将放在文件夹 **[out](out) **下。
+
+然后只需要将生成的 **dll文件** 拷贝到 **MyQQ\plugin** 文件夹下，然后打开 **MyQQ.exe** ，在 **插件管理** 启用插件即可。

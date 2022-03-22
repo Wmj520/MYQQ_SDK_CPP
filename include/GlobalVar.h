@@ -5,8 +5,7 @@
 #include <detail/ThreadPool.hpp>
 #include <MQcore/MQType.h>
 
-extern std::atomic<bool> APIInitSuccess;
-extern std::atomic<bool> PluginEnable;
+extern std::atomic<bool> PluginLoad;
 extern std::atomic<bool> EventContInit;
 extern ThreadPool::TPool p;
 extern HMODULE MQHModule;
