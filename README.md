@@ -89,7 +89,7 @@ MQ_REGISTER_EVENT
 
 ### 修改插件信息
 
-请在 `MQHeader.h` 文件修改插件相关的 `Id` 、`Author`、`Desc` 、`Version` 信息，并将项目重命名为你的插件名(即你想要命名的dll前缀)，并且该项需要与 `PluginId` 宏一致，否则插件将会载入失败。
+请在 [`MQHeader.h`](include/MQcore/MQHeader.h) 文件修改插件相关的 `Id` 、`Author`、`Desc` 、`Version` 信息，并将项目重命名为你的插件名，并且该项需要与 `PluginId` 宏一致，否则插件将会载入失败。
 
 ### 编写插件
 
@@ -104,3 +104,7 @@ MQ_REGISTER_EVENT
 在 **Visual Studio** 使用快捷键 **Ctrl + Alt + F7** 生成项目，生成的 **dll文件** 将放在文件夹 **[out](out) **下。
 
 然后只需要将生成的 **dll文件** 拷贝到 **MyQQ\plugin** 文件夹下，然后打开 **MyQQ.exe** ，在 **插件管理** 启用插件即可。
+
+### 注意事项
+
+- 该SDK运行需安装 Visual C++ 可再发行软件包，请提醒用户安装，下载地址见 [最新支持的 Visual C++ 下载](https://support.microsoft.com/zh-cn/help/2977003/the-latest-supported-visual-c-downloads)。
