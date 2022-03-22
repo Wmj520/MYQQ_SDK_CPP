@@ -18,7 +18,7 @@
 #define APIDLLNAME "MyQQAApi.dll"
 #endif
 
-#if !defined USE_CMAKE
+#if !defined USE_CMAKE && (!defined PluginId)
 #define PluginId "MYQQ_SDK_CPP"
 #define PluginAuthor "you"
 #define PluginDesc "plugin information"

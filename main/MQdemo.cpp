@@ -2,58 +2,58 @@
 #include <MQCore/MQHeader.h>
 #include <GlobalVar.h>
 using namespace MQ;
-//MQ::Api		MQ æä¾›çš„apiå‡½æ•°æ¥å£
-//MQ::Enum		MQ äº‹ä»¶å¸¸é‡
-//MQ::Event		MQ æ³¨å†Œäº‹ä»¶å›è°ƒå‡½æ•°
-//MQ::logging	MQ æ—¥å¿—
-//MQ::type		MQ ç›¸å…³æ•°æ®å°è£…
-//MQ::æ–‡æœ¬ä»£ç 	MQ æ–‡æœ¬ä»£ç 
+//MQ::Api		MQ Ìá¹©µÄapiº¯Êı½Ó¿Ú
+//MQ::Enum		MQ ÊÂ¼ş³£Á¿
+//MQ::Event		MQ ×¢²áÊÂ¼ş»Øµ÷º¯Êı
+//MQ::logging	MQ ÈÕÖ¾
+//MQ::type		MQ Ïà¹ØÊı¾İ·â×°
+//MQ::ÎÄ±¾´úÂë	MQ ÎÄ±¾´úÂë
 void processEvent(const Event::NormalEvent& e)
 {
-	MQEventCheck(e.eventType, Enum::MQEventEnum::æ¶ˆæ¯ç±»å‹_å¥½å‹)
+	MQEventCheck(e.eventType, Enum::MQEventEnum::ÏûÏ¢ÀàĞÍ_ºÃÓÑ)
 	{
 		if (e.botQQ == e.activeQQ)return;
-		//æ—¥å¿—è¾“å‡º fun
+		//ÈÕÖ¾Êä³ö fun
 		MQ::Api::FrameAPI::OutPut("fun");
-		//æ—¥å¿—è¾“å‡º [info]fun
+		//ÈÕÖ¾Êä³ö [info]fun
 		logging::info("fun");
-		//å¤è¯»
-		MQ::Api::MessageAPI::SendMsg(e.botQQ, Enum::msgType::å¥½å‹, "", e.activeQQ, e.msg);
-		//MQ::MessageAPI::SendMsg(e.botQQ, msgType::ç¾¤, e.sourceId, "", e.msg);
+		//¸´¶Á
+		MQ::Api::MessageAPI::SendMsg(e.botQQ, Enum::msgType::ºÃÓÑ, "", e.activeQQ, e.msg);
+		//MQ::MessageAPI::SendMsg(e.botQQ, msgType::Èº, e.sourceId, "", e.msg);
 	}
 }
 /*
-* æ’ä»¶å…¥å£
-* è¯·åœ¨è¯¥å®(MQ_REGISTER_EVENT)çš„ä½œç”¨åŸŸå†…æ³¨å†Œå›è°ƒå‡½æ•°
-* åœ¨é™æ€æˆå‘˜åˆå§‹åŒ–ã€æ’ä»¶ç³»ç»Ÿè½½å…¥äº‹ä»¶ä¹‹åï¼Œæ’ä»¶ç”¨æˆ·è½½å…¥äº‹ä»¶å‘ç”Ÿä¹‹å‰è¢«æ‰§è¡Œ,ç”¨äºé…ç½®SDKå’Œæ³¨å†Œäº‹ä»¶å›è°ƒ
+* ²å¼şÈë¿Ú
+* ÇëÔÚ¸Ãºê(MQ_REGISTER_EVENT)µÄ×÷ÓÃÓòÄÚ×¢²á»Øµ÷º¯Êı
+* ÔÚ¾²Ì¬³ÉÔ±³õÊ¼»¯¡¢²å¼şÏµÍ³ÔØÈëÊÂ¼şÖ®ºó£¬²å¼şÓÃ»§ÔØÈëÊÂ¼ş·¢ÉúÖ®Ç°±»Ö´ĞĞ,ÓÃÓÚÅäÖÃSDKºÍ×¢²áÊÂ¼ş»Øµ÷
 */
 MQ_REGISTER_EVENT
 {
 	if (EventContInit)return;
-	//æ³¨å†Œäº‹ä»¶å›è°ƒå‡½æ•°1,ä¼˜å…ˆçº§20000
+	//×¢²áÊÂ¼ş»Øµ÷º¯Êı1,ÓÅÏÈ¼¶20000
 	MQ::Event::reg_Event(processEvent, 20000);
-	//æ³¨å†Œäº‹ä»¶å›è°ƒå‡½æ•°2,ä¼˜å…ˆçº§10000
+	//×¢²áÊÂ¼ş»Øµ÷º¯Êı2,ÓÅÏÈ¼¶10000
 	MQ::Event::reg_Event([](const Event::NormalEvent& e) {
-		MQEventCheck(e.eventType, Enum::MQEventEnum::æ¶ˆæ¯ç±»å‹_å¥½å‹)
+		MQEventCheck(e.eventType, Enum::MQEventEnum::ÏûÏ¢ÀàĞÍ_ºÃÓÑ)
 		{
 			if (e.botQQ == e.activeQQ)return;
-			//æ—¥å¿—è¾“å‡º lambda
+			//ÈÕÖ¾Êä³ö lambda
 			Api::FrameAPI::OutPut("lambda");
-			//å¤è¯»QQ
-			Api::MessageAPI::SendMsg(e.botQQ, Enum::msgType::å¥½å‹, "", e.activeQQ, MQ::æ–‡æœ¬ä»£ç ::å¯¹è±¡QQ() + ":" + e.msg);
-			//é˜»æ­¢åç»­è¯¥äº‹ä»¶å›è°ƒå‡½æ•°æ‰§è¡Œ,ä½ä¼˜å…ˆçº§å›è°ƒå‡½æ•°æ— æƒæ‹’ç»
+			//¸´¶ÁQQ
+			Api::MessageAPI::SendMsg(e.botQQ, Enum::msgType::ºÃÓÑ, "", e.activeQQ, MQ::ÎÄ±¾´úÂë::¶ÔÏóQQ() + ":" + e.msg);
+			//×èÖ¹ºóĞø¸ÃÊÂ¼ş»Øµ÷º¯ÊıÖ´ĞĞ,µÍÓÅÏÈ¼¶»Øµ÷º¯ÊıÎŞÈ¨¾Ü¾ø
 			e.eventBlock();
 		}
 	}, 10000);
-	//æ³¨å†Œäº‹ä»¶å›è°ƒå‡½æ•°3,ä¼˜å…ˆçº§10000
+	//×¢²áÊÂ¼ş»Øµ÷º¯Êı3,ÓÅÏÈ¼¶10000
 	Event::reg_Event([](const Event::NormalEvent& e) {
-		MQEventCheck(e.eventType, Enum::MQEventEnum::æ¶ˆæ¯ç±»å‹_æœ¬æ’ä»¶è½½å…¥)
+		MQEventCheck(e.eventType, Enum::MQEventEnum::ÏûÏ¢ÀàĞÍ_±¾²å¼şÔØÈë)
 		{
-			//è®¾ç½®äº‹ä»¶è¿”å›å€¼ä¸ºå¿½ç•¥,è‹¥é«˜ä¼˜å…ˆçº§å›è°ƒå‡½æ•°å·²é˜»å¡åˆ™æ— æ³•ä¿®æ”¹é˜»å¡çŠ¶æ€
+			//ÉèÖÃÊÂ¼ş·µ»ØÖµÎªºöÂÔ,Èô¸ßÓÅÏÈ¼¶»Øµ÷º¯ÊıÒÑ×èÈûÔòÎŞ·¨ĞŞ¸Ä×èÈû×´Ì¬
 			e.retIgnore();
 		}
 		}, 10000);
-	//æ³¨å†Œè®¾ç½®çª—å£,ä¼˜å…ˆçº§ä¸ºé»˜è®¤30000
+	//×¢²áÉèÖÃ´°¿Ú,ÓÅÏÈ¼¶ÎªÄ¬ÈÏ30000
 	Event::reg_Setting([](const auto& e) {
 		MessageBoxA(nullptr, "Text", "Caption", 0);
 		});
