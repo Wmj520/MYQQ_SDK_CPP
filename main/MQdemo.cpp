@@ -31,7 +31,7 @@ MQ_REGISTER_EVENT
 	if (EventContInit)return;
 	//注册事件回调函数1,优先级20000
 	MQ::Event::reg_Event(processEvent, 20000);
-	//注册事件回调函数2,优先级10000
+	//注册事件回调函数2,优先级15000
 	MQ::Event::reg_Event([](const Event::NormalEvent& e) {
 		MQEventCheck(e.eventType, Enum::MQEventEnum::消息类型_好友)
 		{
@@ -43,7 +43,7 @@ MQ_REGISTER_EVENT
 			//阻止后续该事件回调函数执行,低优先级回调函数无权拒绝
 			e.eventBlock();
 		}
-	}, 10000);
+	}, 15000);
 	//注册事件回调函数3,优先级10000
 	Event::reg_Event([](const Event::NormalEvent& e) {
 		MQEventCheck(e.eventType, Enum::MQEventEnum::消息类型_本插件载入)

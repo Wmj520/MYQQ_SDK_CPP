@@ -1,4 +1,4 @@
-# MYQQ_SDK_CPP
+# MYQQ_SDK_CPP_Ver1.9.2
 
 MYQQ_SDK_CPP封装了提供给MQ的DLL接口相关的底层逻辑，为插件编程者提供更现代的C++接口。
 
@@ -56,14 +56,14 @@ MQ_REGISTER_EVENT
 			e.eventBlock();
 		}
 	}, 10000);
-	//注册事件回调函数3,优先级1
+	//注册事件回调函数3,优先级15000
 	Event::reg_Event([](const Event::NormalEvent& e) {
 		MQEventCheck(e.eventType, Enum::MQEventEnum::消息类型_本插件载入)
 		{
 			//设置事件返回值为忽略,若高优先级回调函数已阻塞则无法修改阻塞状态
 			e.retIgnore();
 		}
-		}, 10000);
+		}, 15000);
 	//注册设置窗口,优先级为默认30000
 	Event::reg_Setting([](const auto& e) {
 		MessageBoxA(nullptr, "Text", "Caption", 0);
@@ -108,3 +108,7 @@ MQ_REGISTER_EVENT
 ### 注意事项
 
 - 该SDK运行需安装 Visual C++ 可再发行软件包，请提醒用户安装，下载地址见 [最新支持的 Visual C++ 下载](https://support.microsoft.com/zh-cn/help/2977003/the-latest-supported-visual-c-downloads)。
+
+### 问题反馈
+
+如果使用该sdk过程中遇到任何问题、Bug，或有其它意见或建议，欢迎提 [issue](https://github.com/Wmj520/MYQQA_SDK_CPP/issues) ，或者加 **QQ2216193879** 交流讨论。
