@@ -111,4 +111,4 @@ MQ_REGISTER_EVENT
 
 ### 问题反馈
 
-如果使用该sdk过程中遇到任何问题、Bug，或有其它意见或建议，欢迎提 [issue](https://github.com/Wmj520/MYQQA_SDK_CPP/issues) ，或者加 **QQ2216193879** 交流讨论。
+如果使用该sdk过程中遇到任何问题、Bug，或有其它意见或建议，欢迎提 [issue](https://github.com/Wmj520/MYQQ_SDK_CPP/issues) ，或者加 **QQ2216193879** 交流讨论。
