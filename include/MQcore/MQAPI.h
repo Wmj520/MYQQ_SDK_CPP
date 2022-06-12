@@ -533,6 +533,10 @@ namespace MQ::Api
 	};
 	namespace KeyAPI
 	{
+		inline void GetDomainCookies(Str botQQ, Str pt_aid, Str aid, Str jumpAddr)
+		{
+			return MQ::Detail::GetDomainCookies(StrToText(botQQ), StrToText(pt_aid), StrToText(aid), StrToText(jumpAddr));
+		}
 		inline Text GetBlogPsKey(Str botQQ)
 		{
 			return MQ::Detail::GetBlogPsKey(StrToText(botQQ));
