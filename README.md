@@ -107,8 +107,8 @@ MQ_REGISTER_EVENT
 
 ### 注意事项
 
-- 该SDK运行需安装 Visual C++ 可再发行软件包，请提醒用户安装，下载地址见 [最新支持的 Visual C++ 下载](https://support.microsoft.com/zh-cn/help/2977003/the-latest-supported-visual-c-downloads)。
-
+- 该SDK生成的插件运行环境需安装 Visual C++ 可再发行软件包，请提醒用户安装，下载地址见 [最新支持的 Visual C++ 下载](https://support.microsoft.com/zh-cn/help/2977003/the-latest-supported-visual-c-downloads)。
+- 若运行服务器安装上述组件包还未能载入，请生成**Release**版本。
 ### 问题反馈
 
 如果使用该sdk过程中遇到任何问题、Bug，或有其它意见或建议，欢迎提 [issue](https://github.com/Wmj520/MYQQ_SDK_CPP/issues) ，或者加 **QQ2216193879** 交流讨论。
