@@ -173,6 +173,10 @@ namespace MQ::Api
 	}
 	namespace GroupAPI
 	{
+		inline void HandleGroupMyEvent(Str botQQ, Str data)
+		{
+			return MQ::Detail::HandleGroupMyEvent(StrToText(botQQ), StrToText(data));
+		}
 		inline Text GetDisGroupList(Str botQQ)
 		{
 			return MQ::Detail::GetDisGroupList(StrToText(botQQ));
