@@ -1,4 +1,4 @@
-# MYQQ_SDK_CPP_Ver1.9.2
+# MYQQ_SDK_CPP_Ver2.0.4
 
 MYQQ_SDK_CPP封装了提供给MQ的DLL接口相关的底层逻辑，为插件编程者提供更现代的C++接口。
 
@@ -74,7 +74,7 @@ MQ_REGISTER_EVENT
 
 ### 简介
 
-- `MQ::Api` 命名空间封装了MQ提供的大部分api接口，现更新到MyQQ `1.9.2` 版本
+- `MQ::Api` 命名空间封装了MQ提供的大部分api接口，现更新到MyQQ `2.0.4` 版本
 - `MQ::文本代码` 命名空间提供了快速构造MQ文本代码的接口
 - `MQ::Enum`命名空间封装了MQ相关常量 `MQEventEnum` 、事件返回值 `EventRet`、消息来源类型 `msgType`
 - `MQ::Event` 命名空间提供了注册MQ各事件回调函数接口，如` reg_Event`，并且封装了MQ各事件的数据类，如 `NomarlEvent` 等，将在事件回调函数中传入
