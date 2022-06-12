@@ -1,14 +1,22 @@
-//MYQQ°æ±¾API
+//MYQQç‰ˆæœ¬API
+
 
 /// <summary>
-/// MYQQ°æ±¾Ver1.8.8ĞÂÔöAPI
+/// MYQQç‰ˆæœ¬Ver1.9.4æ–°å¢API
+/// </summary>
+
+MQAPI(HandleGroupMyEvent, void, Text botQQ, Text data)
+MQAPI(GetDomainCookies, void, Text botQQ, Text pt_aid, Text aid, Text jumpAddr)
+
+/// <summary>
+/// MYQQç‰ˆæœ¬Ver1.8.8æ–°å¢API
 /// </summary>
 
 MQAPI(DelSay, bool, Text botQQ, Text sayId)
 MQAPI(GetPluginList, Text, void)
 
 /// <summary>
-/// MYQQ°æ±¾Ver1.8.7Ç°²¿·ÖAPI
+/// MYQQç‰ˆæœ¬Ver1.8.7å‰éƒ¨åˆ†API
 /// </summary>
 
 MQAPI(OutPut, void, Text content)
@@ -168,6 +176,6 @@ MQAPI(RedPack_Game, Text, Text botQQ, Text payPwd, Text objId, Text num, Text am
 MQAPI(HB_Detial, Text, Text botQQ, Text groupId, Text mqMsg)
 MQAPI(HB_DetialEx, Text, Text botQQ, Text groupId, Text mqMsg, Integer page)
 /*
-* ĞèÒªÆäËûApiÇë¸ù¾İ¹ÙÍø×ÔĞĞÌí¼Ó...
-* MQAPI(Apiºó×º, ·µ»ØÀàĞÍ, ²ÎÊıÁĞ±í)
+* éœ€è¦å…¶ä»–Apiè¯·æ ¹æ®å®˜ç½‘è‡ªè¡Œæ·»åŠ ...
+* MQAPI(Apiåç¼€, è¿”å›ç±»å‹, å‚æ•°åˆ—è¡¨)
 */
