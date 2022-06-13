@@ -4,13 +4,13 @@
 #include <MQconfig.h>
 #if !defined MYQQ
 #define MYQQ
-#define MYQQVER	"1.9.2"
+#define MYQQVER	"2.0.3"
 #define CheckMQVersion(Ver) (strcmp((Ver), MYQQVER) == 0)
 #endif
 #if (!defined (MYQQ)) && (!defined MYQQA)
-#error ÇëÔÚ"MQconfig.H"È·¶¨ÄãÊ¹ÓÃµÄMYQQ°æ±¾£¡
+#error è¯·åœ¨"MQconfig.H"ç¡®å®šä½ ä½¿ç”¨çš„MYQQç‰ˆæœ¬ï¼
 #elif (defined MYQQ) && (defined MYQQA)
-#error ÇëÑ¡ÔñÆäÖĞÒ»¸ö°æ±¾£¡
+#error è¯·é€‰æ‹©å…¶ä¸­ä¸€ä¸ªç‰ˆæœ¬ï¼
 #endif
 #if defined MYQQ
 #define APIDLLNAME "MyQQApi.dll"
@@ -28,7 +28,7 @@
 #endif
 
 #if !defined PluginId 
-#error ÇëÈ·¶¨²å¼şÃû×Ö¡®PluginId¡¯£¡
+#error è¯·ç¡®å®šæ’ä»¶åå­—â€˜PluginIdâ€™ï¼
 #endif
 
 #include "MQType.h"
