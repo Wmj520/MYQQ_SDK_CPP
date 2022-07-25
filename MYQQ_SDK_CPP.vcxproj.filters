@@ -36,9 +36,6 @@
     <ClCompile Include="src\GlovalVar.cpp">
       <Filter>源文件\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\MQcore\MQAPI.cpp">
-      <Filter>源文件\src\MQcore</Filter>
-    </ClCompile>
     <ClCompile Include="src\MQcore\MQEvent.cpp">
       <Filter>源文件\src\MQcore</Filter>
     </ClCompile>

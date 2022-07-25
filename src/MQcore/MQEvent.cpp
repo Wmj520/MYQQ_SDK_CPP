@@ -149,16 +149,16 @@ EVENT(Enum::EventRet, MQ_Event, 44)(Text 框架QQ, Integer 消息类型, Integer
     {
         MQExceptionCode(exception::MQException::MQExceptionEnum::MQOK, "插件正在禁用！");
     }
+    Event::NormalEvent _event(_TextVaild(框架QQ), 消息类型, 消息子类型, _TextVaild(消息来源), _TextVaild(触发对象_主动), _TextVaild(触发对象_被动), _TextVaild(消息),
+        _TextVaild(消息序号), _TextVaild(消息ID), _TextVaild(原始信息), _PtrVaild(信息回传文本指针));
     MQEventCheck(消息类型, Enum::MQEventEnum::消息类型_本插件载入)
     {
-        return Enum::EventRet::事件处理_同意;
+        _event.operation = Enum::EventRet::事件处理_同意;
     }
     MQEventCheck(消息类型, Enum::MQEventEnum::消息类型_插件被启用)
     {
-        return Enum::EventRet::事件处理_同意;
+        _event.operation = Enum::EventRet::事件处理_同意;
     }
-    Event::NormalEvent _event(_TextVaild(框架QQ), 消息类型, 消息子类型, _TextVaild(消息来源), _TextVaild(触发对象_主动), _TextVaild(触发对象_被动), _TextVaild(消息),
-        _TextVaild(消息序号), _TextVaild(消息ID), _TextVaild(原始信息), _PtrVaild(信息回传文本指针));
     CallAllFun(Event::EventCallbackCont(), _event);
     return _event.operation;
 }
@@ -174,7 +174,7 @@ void CallingConvention __Init()
         MQHModule = LoadLibraryA(APIDLLNAME);
         if (MQHModule)
         {
-            initFuncs(MQHModule);
+            MQ::Detail::ApiInit(MQHModule);
             MQExceptionCode(exception::MQException::MQExceptionEnum::MQOK, "插件载入成功！");
             Api::FrameAPI::OutPut("插件Api初始化完毕...");
             init();

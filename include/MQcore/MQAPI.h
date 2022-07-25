@@ -14,28 +14,41 @@
 
 namespace MQ::Detail
 {
-	extern std::vector<std::function<void(HMODULE)>> apiFuncInitializers;
-	static bool addFuncInit(const std::function<void(HMODULE)>& initializer) {
-		apiFuncInitializers.push_back(initializer);
+	inline auto& ApiInitializers()
+	{
+		static std::vector<std::function<void(HMODULE)>> _Initializers;
+		return _Initializers;
+	}
+	inline bool AddApiInit(const std::function<void(HMODULE)>& initializer)
+	{
+		ApiInitializers().push_back(initializer);
 		return true;
 	}
-#define MQAPI(Name, ReturnType, ...) using Name##_FUNC = std::function<ReturnType (__stdcall)(__VA_ARGS__)>; \
-	extern Name##_FUNC _##Name; \
+	inline void ApiInit(HMODULE const& hModule)
+	{
+		for (const auto& it : ApiInitializers())
+		{
+			it(hModule);
+		}
+		ApiInitializers().clear();
+	}
+#define MQAPI(Name, ReturnType, ...) \
+	using Name##_FUNC = std::function<ReturnType (__stdcall)(__VA_ARGS__)>; \
+	using Name##_TYPE = ReturnType (__stdcall*)(__VA_ARGS__); \
+	inline Name##_FUNC _##Name; \
+	inline bool _init_##Name = AddApiInit( [] (const auto& hModule) { \
+        _##Name = reinterpret_cast<Name##_TYPE>(GetProcAddress(hModule, "Api_" #Name)); \
+        if (!_##Name)MQExceptionCode(MQ::exception::MQException::MQExceptionEnum::MQDllFuncError, "Unable to initialize API Function " #Name); \
+    });\
 	template <typename... Args> \
 	ReturnType Name (Args&&... args) \
 	{ \
-		return p.push([&args...](int iThread){ return _##Name(std::forward<Args>(args)...); }).get(); \
+		return p.push([&args...](int iThread){ if(_##Name)return _##Name(std::forward<Args>(args)...);return ReturnType(); }).get(); \
 	} 
 #include <MQCore/MyQQAPI.inc>
 #undef MQAPI
 }
-static void initFuncs(const HMODULE& hModule)
-{
-	for (const auto& initializer : MQ::Detail::apiFuncInitializers) {
-		initializer(hModule);
-	}
-	MQ::Detail::apiFuncInitializers.clear();
-}
+
 namespace MQ::文本代码
 {
 	constexpr auto __str_replace_once = [](Str& str, const Str& replace) {
