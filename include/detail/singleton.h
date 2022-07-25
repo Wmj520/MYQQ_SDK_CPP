@@ -27,6 +27,7 @@ public:
 					singleton<_InstanceType>::schedule_for_destory(singleton<_InstanceType>::destory_instance);
 					__Ins_Exist.store(true, std::memory_order_release);
 				}
+				return _Ins;
 			}
 			catch (...)
 			{
